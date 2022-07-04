@@ -24,7 +24,8 @@ export default function Home() {
       </Head>
 
       <Main>
-        <h1>caroline.art.br</h1>
+        <h1>Teste hospedagem - ✅</h1><br />
+        <h1>Teste deploy - ✅</h1>
       </Main>
 
     </div>
