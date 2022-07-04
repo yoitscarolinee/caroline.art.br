@@ -12,6 +12,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 text-align: center;
+flex-direction: column;
 
 `;
 export default function Home() {
@@ -24,7 +25,7 @@ export default function Home() {
       </Head>
 
       <Main>
-        <h1>Teste hospedagem - ✅</h1><br />
+        <h1>Teste hospedagem - ✅</h1>
         <h1>Teste deploy - ✅</h1>
       </Main>
 
