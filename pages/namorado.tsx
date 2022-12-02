@@ -13,7 +13,7 @@ const Namorado = () => {
     let now = dd + '/' + mm + '/' + yyyy;
 
 
-    const date1: any = new Date('06/11/2022');
+    const date1: any = new Date('01/11/2022');
     const date2: any = new Date(now);
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -79,6 +79,7 @@ const Subtitle = styled.div`
 
 const FlexDiv = styled.div`
     width: 80%;
+    height: 70%;
     display: flex;
     justify-content: space-around;
     align-items: center;
