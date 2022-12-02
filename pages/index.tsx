@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
       <Landing>
 
-        {/* <Header /> */}
+        <Header /> 
 
         <Logo>
 
@@ -58,11 +58,11 @@ const Home: NextPage = () => {
 
       </Landing>
 
-      {/* <BioWrapper> */}
+      <BioWrapper>
 
 
 
-      {/* </BioWrapper> */}
+      </BioWrapper>
 
     </>
   )
