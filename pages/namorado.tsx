@@ -45,7 +45,7 @@ const Namorado = () => {
                 </Imagem>
                 <Imagem>
                     <Image
-                        src="/img/drei.jpeg"
+                        src="/img/drei.png"
                         alt=""
                         layout="fill"
                         objectFit="contain"
