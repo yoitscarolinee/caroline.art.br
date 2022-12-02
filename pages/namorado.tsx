@@ -10,7 +10,7 @@ const Namorado = () => {
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
     
-    let now = mm + '/' + dd + '/' + yyyy;
+    let now = dd + '/' + mm + '/' + yyyy;
 
 
     const date1: any = new Date('06/11/2022');
