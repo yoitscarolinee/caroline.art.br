@@ -7,13 +7,15 @@ const Namorado = () => {
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
     
-    let now = dd + '/' + mm + '/' + yyyy;
+    let now = mm + '/' + dd + '/' + yyyy;
+
+    let hoje = dd + '/' + mm + '/' + yyyy;
 
 
-    const date1: any = new Date('01/11/2022');
+    const date1: any = new Date('11/01/2022');
     const date2: any = new Date(now);
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -21,8 +23,6 @@ const Namorado = () => {
 
     return (
         <Wrapper>
-
-            <Title>Namorados!</Title>
             <FlexDiv>
 
                 <Imagem>
@@ -54,22 +54,29 @@ const Namorado = () => {
                 </Imagem>
 
             </FlexDiv>
-            <Subtitle>Estamos namorando a {diffDays} dias!</Subtitle>
+            <br /><br />
+            <Subtitle>Estamos namorando a {diffDays} dias!</Subtitle><br />
+            <SubText>01/11/2022 - {hoje}</SubText>
         </Wrapper>
     )
 }
 
 export default Namorado;
 
+const SubText = styled.p`
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+`;
+
 const Imagem = styled.div`
     height: 250px;
     position: relative;
     width: 250px;
-`;
-
-const Title = styled.div`
-    font-size: 28px;
-    font-weight: 700;
+    
+    & img {
+        border-radius: 25px;
+    }
 `;
 
 const Subtitle = styled.div`
@@ -79,9 +86,10 @@ const Subtitle = styled.div`
 
 const FlexDiv = styled.div`
     width: 80%;
-    height: 70%;
+    height: 250px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 15px;
     align-items: center;
 `;
 
