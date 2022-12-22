@@ -45,7 +45,7 @@ const Item = styled.div`
     align-items: center;
     justify-content: center;
     gap: 10px;
-    color: #BA71E0;
+    color: #BA71E0 !important;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: 600;
@@ -58,4 +58,5 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: left;
     gap: 50px;
+    background-color: black;
 `;
