@@ -67,6 +67,8 @@ const SubText = styled.p`
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
     font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
 `;
 
 const Imagem = styled.div`
@@ -80,7 +82,10 @@ const Imagem = styled.div`
 `;
 
 const Subtitle = styled.div`
-    font-size: 28px;
+    width: 100%;
+    font-size: 24px;
+    white-space: nowrap;
+    text-align: center;
     font-weight: 700;
 `;
 
