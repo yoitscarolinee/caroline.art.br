@@ -83,14 +83,14 @@ const Nickgen: NextPage = () => {
 
                         <div>
                             {nicks.map(nick => (
-                                <ResultadoWrapper>
+                                <ResultadoWrapper key={nick}>
                                     <Bolinha invalid={false} /><p>{nick}</p>
                                 </ResultadoWrapper>
                             ))}
                         </div>
                         <div>
                             {existents.map(existent => (
-                                <ResultadoWrapper>
+                                <ResultadoWrapper key={existent}>
                                     <Bolinha invalid={true} /><p>{existent}</p>
                                 </ResultadoWrapper>
                             ))}
