@@ -17,35 +17,35 @@ const Nickgen: NextPage = () => {
 
     var random = new RandomOrg({ apiKey: `${process.env.RANDOM_API}` });
 
-    const handleMessageChange = event => {
+    const handleMessageChange = (event: any) => {
         // 👇️ access textarea value
         setMessage(event.target.value);
     };
 
-    const handleAmountChange = event => {
+    const handleAmountChange = (event: any) => {
         setAmount(event.target.value);
     }
 
-    const handleSizeChange = event => {
+    const handleSizeChange = (event: any) => {
         setSize(event.target.value)
     }
 
-    const handleClick = event => {
+    const handleClick = (event: any) => {
         let arr = message.split("\n");
         console.table(arr);
         for (let i = 0; i < arr.length; i++) {
             const nick = arr[i];
             fetch(`https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=${nick}&size=s`)
                 .then(function () {
-                    setExistents(array => [...array, `${nick}`])
+                    setExistents((array: any) => [...array, `${nick}`])
                 }).catch(function () {
-                    setNicks(array => [...array, `${nick}`])
+                    setNicks((array: any) => [...array, `${nick}`])
                 })
 
         }
     }
 
-    const generateStrings = event => {
+    const generateStrings = (event: any) => {
         random.generateStrings({ n: amount, length: size, characters: "abcdefghijklmnopqrstuvwxyz1234567890.,;:=+-", replacement: false })
             .then(function (result) {
                 let arr = result.random.data
@@ -82,14 +82,14 @@ const Nickgen: NextPage = () => {
                 <div>
 
                         <div>
-                            {nicks.map(nick => (
+                            {nicks.map((nick: any) => (
                                 <ResultadoWrapper key={nick}>
                                     <Bolinha invalid={false} /><p>{nick}</p>
                                 </ResultadoWrapper>
                             ))}
                         </div>
                         <div>
-                            {existents.map(existent => (
+                            {existents.map((existent: any) => (
                                 <ResultadoWrapper key={existent}>
                                     <Bolinha invalid={true} /><p>{existent}</p>
                                 </ResultadoWrapper>
