@@ -14,13 +14,19 @@ const Nickgen: NextPage = () => {
     const [existents, setExistents] = useState([] as any);
     const [amount, setAmount] = useState(0);
     const [size, setSize] = useState(0);
+    const [char, setChar] = useState('')
+    const [count, setCount] = useState(0)
+    const [now, setNow] = useState(0);
 
     var random = new RandomOrg({ apiKey: `${process.env.RANDOM_API}` });
 
     const handleMessageChange = (event: any) => {
-        // 👇️ access textarea value
         setMessage(event.target.value);
     };
+
+    const handleCharChange = (event: any) => {
+        setChar(event.target.value)
+    }
 
     const handleAmountChange = (event: any) => {
         setAmount(event.target.value);
@@ -32,9 +38,11 @@ const Nickgen: NextPage = () => {
 
     const handleClick = (event: any) => {
         let arr = message.split("\n");
+        setCount(arr.length)
         console.table(arr);
         for (let i = 0; i < arr.length; i++) {
             const nick = arr[i];
+            setNow(now+1)
             fetch(`https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=${nick}&size=s`)
                 .then(function () {
                     setExistents((array: any) => [...array, `${nick}`])
@@ -46,7 +54,7 @@ const Nickgen: NextPage = () => {
     }
 
     const generateStrings = (event: any) => {
-        random.generateStrings({ n: amount, length: size, characters: "abcdefghijklmnopqrstuvwxyz1234567890.,;:=+-", replacement: false })
+        random.generateStrings({ n: amount, length: size, characters: char, replacement: false })
             .then(function (result) {
                 let arr = result.random.data
                 let content = ''
@@ -71,16 +79,17 @@ const Nickgen: NextPage = () => {
                         onChange={handleMessageChange}
                     />
                     <ButtonsWrapper>
-                        <div onClick={generateStrings}><GiPerspectiveDiceSixFacesFour /></div>
+                    <p>{now}/{count}</p>
                         <input type="number" value={size} onChange={handleSizeChange} />
                         <input type="number" value={amount} onChange={handleAmountChange} />
+                        <div onClick={generateStrings}><GiPerspectiveDiceSixFacesFour /></div>
                         <div onClick={handleClick}><FaCheck /></div>
                     </ButtonsWrapper>
+                    <input type="text" value={char} onChange={handleCharChange} />
                 </FormWrapper>
                 <br />
                 <br />
                 <div>
-
                         <div>
                             {nicks.map((nick: any) => (
                                 <ResultadoWrapper key={nick}>

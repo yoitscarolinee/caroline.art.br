@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
       <Landing>
 
-        <Header /> 
+        {/* <Header />  */}
 
         <Logo>
 
