@@ -9,9 +9,9 @@ const Namorado = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const date1: Date = new Date('11/01/2022');
-            const date2: Date = new Date();
-            const diffTime = Math.abs(date2 - date1);
+            const date1 = new Date('11/01/2022');
+            const date2 = new Date();
+            const diffTime = Math.abs(date2.getTime() - date1.getTime());
             const seconds = Math.floor(diffTime / 1000);
             setDiffSeconds(seconds);
         }, 1000);
