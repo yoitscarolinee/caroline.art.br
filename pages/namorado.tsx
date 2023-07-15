@@ -1,30 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import styled from 'styled-components';
 import Image from 'next/image';
 
 const Namorado = () => {
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    
-    let now = mm + '/' + dd + '/' + yyyy;
+    const [diffSeconds, setDiffSeconds] = useState(0);
 
-    let hoje = dd + '/' + mm + '/' + yyyy;
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const date1: Date = new Date('11/01/2022');
+            const date2: Date = new Date();
+            const diffTime = Math.abs(date2 - date1);
+            const seconds = Math.floor(diffTime / 1000);
+            setDiffSeconds(seconds);
+        }, 1000);
 
+        return () => clearInterval(interval);
+    }, []);
 
-    const date1: any = new Date('11/01/2022');
-    const date2: any = new Date(now);
-    const diffTime = Math.abs(date2 - date1);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    const now = mm + '/' + dd + '/' + yyyy;
+    const hoje = dd + '/' + mm + '/' + yyyy;
 
+    const diffDays = Math.ceil(diffSeconds / (60 * 60 * 24));
+    const diffMonths = Math.floor(diffSeconds / (60 * 60 * 24 * 31));
 
     return (
         <Wrapper>
             <FlexDiv>
-
                 <Imagem>
                     <Image
                         src="/img/carol.jpeg"
@@ -52,14 +59,16 @@ const Namorado = () => {
                         draggable="false"
                     />
                 </Imagem>
-
             </FlexDiv>
-            <br /><br />
-            <Subtitle>Estamos namorando a {diffDays} dias!</Subtitle><br />
+            <Subtitle>Estamos namorando há {diffMonths} meses!</Subtitle>
+            <div className="info">
+                <p>ou {diffDays} dias</p>
+                <p>que são {diffSeconds} segundos</p>
+            </div>
             <SubText>01/11/2022 - {hoje}</SubText>
         </Wrapper>
-    )
-}
+    );
+};
 
 export default Namorado;
 
@@ -106,4 +115,12 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 32px;
+
+    & > .info {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
 `;
